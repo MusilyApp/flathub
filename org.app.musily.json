@@ -1,0 +1,28 @@
+{
+  "app-id": "org.app.musily",
+  "runtime": "org.freedesktop.Platform",
+  "runtime-version": "22.08",
+  "sdk": "org.freedesktop.Sdk",
+  "command": "musily",
+  "separate-locales": false,
+  "finish-args": [
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--socket=wayland",
+    "--device=dri",
+    "--socket=pulseaudio",
+    "--share=network",
+    "--talk-name=org.freedesktop.secrets"
+  ],
+  "sdk-extensions": ["org.freedesktop.Sdk.Extension.vala"],
+  "build-options": {
+    "append-path": "/usr/lib/sdk/vala/bin",
+    "prepend-ld-library-path": "/usr/lib/sdk/vala/lib"
+  },
+  "modules": [
+    "modules/musily.json",
+    "modules/libjsoncpp.json",
+    "modules/libsecret.json",
+    "modules/libmpv.json"
+  ]
+}

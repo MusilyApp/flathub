@@ -1,0 +1,17 @@
+{
+  "name": "Musily",
+  "buildsystem": "simple",
+  "only-arches": ["x86_64"],
+  "build-commands": ["./setup_musily.sh"],
+  "sources": [
+    {
+      "type": "dir",
+      "path": "../assets"
+    },
+    {
+      "type": "archive",
+      "url": "https://github.com/FelipeYslaoker/musily/releases/download/2.1.2/musily-linux-x64.tar.gz",
+      "sha256": "b025599e5f63effaf4bc778da31f9a05e379c46b40698cfd55b9a05c986608f7"
+    }
+  ]
+}
