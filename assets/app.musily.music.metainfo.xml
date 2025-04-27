@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop-application">
-  <id>org.app.musily</id>
+  <id>app.musily.music</id>
 
   <name>Musily</name>
   <summary>A great music app.</summary>
@@ -28,7 +28,7 @@
     </ul>
   </description>
 
-  <launchable type="desktop-id">org.app.musily.desktop</launchable>
+  <launchable type="desktop-id">app.musily.music.desktop</launchable>
   <screenshots>
     <screenshot type="default">
       <image>
@@ -43,41 +43,71 @@
         https://raw.githubusercontent.com/FelipeYslaoker/musily/releases/assets/screenshots/linux_downloads.png</image>
     </screenshot>
   </screenshots>
+
   <content_rating type="oars-1.1" />
+
   <releases>
+    <release version="3.1.1" date="2025-02-04">
+      <description>
+        <h3>Improvements</h3>
+        <item>Magic Queue: Fixed and completely redesigned for a smoother and smarter experience.</item>
+      </description>
+    </release>
+
+    <release version="3.1.0" date="2025-01-05">
+      <description>
+        <h3>Features</h3>
+        <item>Added the ability to import playlists from YouTube to your library.</item>
+
+        <h3>Improvements</h3>
+        <item>Improved library backup.</item>
+        <item>Other UI improvements.</item>
+
+        <h3>Fixes</h3>
+        <item>Fixed inconsistencies in the library.</item>
+        <item>Resolved an issue where albums were not added to playlists or the queue from the menu.</item>
+      </description>
+    </release>
+
+    <release version="3.0.0" date="2024-12-01">
+      <description>
+        <h3>Features</h3>
+        <item>Backup Library: Introduced functionality for seamless backup operations.</item>
+        <item>Save Music to Downloads: Added the ability to save music directly to the downloads
+          folder.</item>
+
+        <h3>Improvements</h3>
+        <item>Enhanced UI: Improved the user interface for a more intuitive and visually appealing
+          experience.</item>
+        <item>Faster Downloads: Optimized download speeds for quicker and more efficient file
+          transfers.</item>
+
+        <h3>Fixes</h3>
+        <item>Navigation Bar Issues: Resolved bugs affecting phones with navigation bars instead of
+          gesture-based navigation.</item>
+      </description>
+    </release>
+
     <release version="2.1.2" date="2024-10-09">
       <description>
-        <h2>
-          Hot Fixes
-        </h2>
-        <item>
-          Fixed an issue where music would load infinitely (again).
-        </item>
+        <h2>Hot Fixes</h2>
+        <item>Fixed an issue where music would load infinitely (again).</item>
       </description>
     </release>
+
     <release version="2.1.1" date="2024-09-25">
       <description>
-        <h3>
-          Hot Fixes
-        </h3>
-        <item>
-          Fixed an issue where music would load infinitely.
-        </item>
-        <item>
-          Fixed a bug where the miniplayer was overlaying the last library item.
-        </item>
-        <h3>
-          Minor Improvements
-        </h3>
-        <item>
-          Empty library message is now displayed correctly.
-        </item>
+        <h3>Hot Fixes</h3>
+        <item>Fixed an issue where music would load infinitely.</item>
+        <item>Fixed a bug where the miniplayer was overlaying the last library item.</item>
+
+        <h3>Minor Improvements</h3>
+        <item>Empty library message is now displayed correctly.</item>
       </description>
     </release>
+
     <release version="2.1.0" date="2024-08-26">
       <description>
-        <h2>2.1.0</h2>
-
         <h3>Fixes</h3>
         <item>Resolved an issue where certain search terms resulted in empty search results.</item>
         <item>Addressed a problem where some artists couldn't be found.</item>

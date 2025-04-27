@@ -1,0 +1,158 @@
+{
+  "name": "ffmpeg",
+  "buildsystem": "autotools",
+  "builddir": true,
+  "sources": [
+    {
+      "type": "archive",
+      "url": "https://ffmpeg.org/releases/ffmpeg-6.1.tar.xz",
+      "sha256": "488c1a21368ddedb9f7d321ec5aa8989f8b408850886c850b2a59606d27db130"
+    }
+  ],
+  "cleanup": [
+    "/include",
+    "/lib/pkgconfig",
+    "/share/ffmpeg/examples"
+  ],
+  "config-opts": [
+    "--enable-shared",
+    "--disable-static",
+    "--disable-doc",
+    "--disable-programs",
+    "--enable-gpl",
+    "--enable-version3",
+    "--enable-nonfree",
+    "--enable-libx264",
+    "--enable-libx265",
+    "--enable-libvpx",
+    "--enable-libopus",
+    "--enable-libvorbis",
+    "--enable-libmp3lame",
+    "--enable-libass",
+    "--enable-libfreetype",
+    "--enable-libfontconfig",
+    "--enable-libfribidi",
+    "--enable-libtheora",
+    "--enable-libdav1d",
+    "--enable-libwebp",
+    "--enable-opengl",
+    "--enable-libpulse",
+    "--enable-libdrm",
+    "--enable-gnutls",
+    "--enable-vaapi",
+    "--enable-vdpau"
+  ],
+  "modules": [
+    {
+      "name": "nasm",
+      "buildsystem": "autotools",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://www.nasm.us/pub/nasm/releasebuilds/2.16.01/nasm-2.16.01.tar.xz",
+          "sha256": "c77745f4802375efeee2ec5c0ad6b7f037ea9c87c92b149a9637ff099f162558"
+        }
+      ],
+      "cleanup": [
+        "*"
+      ]
+    },
+    {
+      "name": "x264",
+      "config-opts": [
+        "--enable-shared",
+        "--enable-pic",
+        "--disable-cli"
+      ],
+      "buildsystem": "autotools",
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://code.videolan.org/videolan/x264.git",
+          "tag": "stable"
+        }
+      ]
+    },
+    {
+      "name": "x265",
+      "buildsystem": "cmake-ninja",
+      "builddir": true,
+      "config-opts": [
+        "-DCMAKE_POSITION_INDEPENDENT_CODE=ON",
+        "-DENABLE_CLI=OFF",
+        "-DENABLE_SHARED=ON"
+      ],
+      "subdir": "source",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://bitbucket.org/multicoreware/x265_git/downloads/x265_3.5.tar.gz",
+          "sha256": "e70a3335cacacbba0b3a20ec6fecd6783932288ebc8163ad74bcc9606477cae8"
+        }
+      ]
+    },
+    {
+      "name": "libvpx",
+      "buildsystem": "autotools",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://github.com/webmproject/libvpx/archive/v1.13.0.tar.gz",
+          "sha256": "cb2a393c9c1fae7aba76b950bb0b11d38b82144ed0363378d06b1ee775cb0308"
+        }
+      ],
+      "config-opts": [
+        "--enable-shared",
+        "--disable-static",
+        "--disable-examples",
+        "--disable-tools",
+        "--disable-docs",
+        "--enable-vp8",
+        "--enable-vp9",
+        "--enable-vp9-highbitdepth"
+      ]
+    },
+    {
+      "name": "dav1d",
+      "buildsystem": "meson",
+      "config-opts": [
+        "-Denable_tools=false",
+        "-Denable_tests=false"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://code.videolan.org/videolan/dav1d/-/archive/1.2.1/dav1d-1.2.1.tar.gz",
+          "sha256": "a4b973e6a4bd4f39a7d51d9170d9dc87c2ef7e04299a258747a592a7e01a64c1"
+        }
+      ]
+    },
+    {
+      "name": "lame",
+      "config-opts": [
+        "--enable-shared",
+        "--disable-static",
+        "--disable-gtktest",
+        "--disable-frontend"
+      ],
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://downloads.sourceforge.net/lame/lame-3.100.tar.gz",
+          "sha256": "ddfe36cab873794038ae2c1210557ad34857a4b6bdc515785d1da9e175b1da1e"
+        }
+      ]
+    },
+    {
+      "name": "opus",
+      "buildsystem": "autotools",
+      "sources": [
+        {
+          "type": "archive",
+          "url": "https://archive.mozilla.org/pub/opus/opus-1.4.tar.gz",
+          "sha256": "c9b32b4253be5ae63d1ff16eea06b94b5f0f2951b7a02aceef58e3a3ce49c51f"
+        }
+      ]
+    }
+  ]
+}

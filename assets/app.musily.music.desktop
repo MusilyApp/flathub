@@ -6,7 +6,7 @@ Name=Musily
 Comment=A great music app.
 Categories=AudioVideo;
 
-Icon=org.app.musily
+Icon=app.musily.music
 Exec=musily
 Terminal=false
 StartupWMClass=musily

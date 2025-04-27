@@ -1,5 +1,5 @@
 {
-  "app-id": "org.app.musily",
+  "app-id": "app.musily.music",
   "runtime": "org.freedesktop.Platform",
   "runtime-version": "22.08",
   "sdk": "org.freedesktop.Sdk",
@@ -14,7 +14,9 @@
     "--share=network",
     "--talk-name=org.freedesktop.secrets"
   ],
-  "sdk-extensions": ["org.freedesktop.Sdk.Extension.vala"],
+  "sdk-extensions": [
+    "org.freedesktop.Sdk.Extension.vala"
+  ],
   "build-options": {
     "append-path": "/usr/lib/sdk/vala/bin",
     "prepend-ld-library-path": "/usr/lib/sdk/vala/lib"
@@ -22,7 +24,8 @@
   "modules": [
     "modules/musily.json",
     "modules/libjsoncpp.json",
-    "modules/libsecret.json",
+    "shared-modules/libsecret/libsecret.json",
+    "shared-modules/libayatana-appindicator/libayatana-appindicator-gtk3.json",
     "modules/libmpv.json"
   ]
 }

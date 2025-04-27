@@ -13,7 +13,7 @@ set -x
 
 # No spaces in project name.
 projectName=Musily
-projectId=org.app.musily
+projectId=app.musily.music
 executableName=musily
 
 

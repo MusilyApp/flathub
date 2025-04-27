@@ -1,6 +1,10 @@
 {
   "name": "libmpv",
-  "cleanup": ["/include", "/lib/pkgconfig", "/share/man"],
+  "cleanup": [
+    "/include",
+    "/lib/pkgconfig",
+    "/share/man"
+  ],
   "buildsystem": "simple",
   "build-commands": [
     "python3 waf configure --prefix=/app --enable-libmpv-shared --disable-cplayer --disable-build-date --disable-alsa",
@@ -49,7 +53,9 @@
     {
       "name": "nv-codec-headers",
       "no-autogen": true,
-      "make-install-args": ["PREFIX=/app"],
+      "make-install-args": [
+        "PREFIX=/app"
+      ],
       "sources": [
         {
           "type": "archive",
@@ -60,7 +66,11 @@
     },
     {
       "name": "ffmpeg",
-      "cleanup": ["/include", "/lib/pkgconfig", "/share/ffmpeg/examples"],
+      "cleanup": [
+        "/include",
+        "/lib/pkgconfig",
+        "/share/ffmpeg/examples"
+      ],
       "config-opts": [
         "--enable-shared",
         "--disable-static",
@@ -91,8 +101,14 @@
     },
     {
       "name": "libass",
-      "cleanup": ["/include", "/lib/*.la", "/lib/pkgconfig"],
-      "config-opts": ["--disable-static"],
+      "cleanup": [
+        "/include",
+        "/lib/*.la",
+        "/lib/pkgconfig"
+      ],
+      "config-opts": [
+        "--disable-static"
+      ],
       "sources": [
         {
           "type": "archive",
@@ -104,8 +120,16 @@
     {
       "name": "uchardet",
       "buildsystem": "cmake-ninja",
-      "config-opts": ["-DCMAKE_BUILD_TYPE=Release", "-DBUILD_STATIC=0"],
-      "cleanup": ["/bin", "/include", "/lib/pkgconfig", "/share/man"],
+      "config-opts": [
+        "-DCMAKE_BUILD_TYPE=Release",
+        "-DBUILD_STATIC=0"
+      ],
+      "cleanup": [
+        "/bin",
+        "/include",
+        "/lib/pkgconfig",
+        "/share/man"
+      ],
       "sources": [
         {
           "type": "archive",
