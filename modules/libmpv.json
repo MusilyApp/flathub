@@ -1,30 +1,120 @@
 {
   "name": "libmpv",
   "cleanup": [
-    "/include",
-    "/lib/pkgconfig",
-    "/share/man"
+    "/share/metainfo",
+    "/share/bash-completion",
+    "/share/zsh",
+    "/share/doc",
+    "/share/icons",
+    "/share/applications"
   ],
-  "buildsystem": "simple",
-  "build-commands": [
-    "python3 waf configure --prefix=/app --enable-libmpv-shared --disable-cplayer --disable-build-date --disable-alsa",
-    "python3 waf build",
-    "python3 waf install"
+  "buildsystem": "meson",
+  "config-opts": [
+    "-Dlibmpv=true",
+    "-Dlua=disabled",
+    "-Ddebug=false",
+    "-Dbuild-date=false",
+    "-Dcplayer=false",
+    "-Dmanpage-build=disabled"
   ],
   "sources": [
     {
       "type": "archive",
-      "url": "https://github.com/mpv-player/mpv/archive/refs/tags/v0.34.1.tar.gz",
-      "sha256": "32ded8c13b6398310fa27767378193dc1db6d78b006b70dbcbd3123a1445e746"
-    },
-    {
-      "type": "file",
-      "url": "https://waf.io/waf-2.0.25",
-      "sha256": "21199cd220ccf60434133e1fd2ab8c8e5217c3799199c82722543970dc8e38d5",
-      "dest-filename": "waf"
+      "url": "https://github.com/mpv-player/mpv/archive/refs/tags/v0.38.0.tar.gz",
+      "sha256": "86d9ef40b6058732f67b46d0bbda24a074fae860b3eaae05bab3145041303066",
+      "x-checker-data": {
+        "type": "anitya",
+        "project-id": 5348,
+        "stable-only": true,
+        "url-template": "https://github.com/mpv-player/mpv/archive/refs/tags/v$version.tar.gz"
+      }
     }
   ],
+  "post-install": [
+    "ln -s /app/lib/libmpv.so /app/lib/libmpv.so.1"
+  ],
   "modules": [
+    {
+      "name": "libplacebo",
+      "buildsystem": "meson",
+      "config-opts": [
+        "-Dvulkan=enabled",
+        "-Dshaderc=enabled"
+      ],
+      "cleanup": [
+        "/include",
+        "/lib/pkgconfig"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://code.videolan.org/videolan/libplacebo.git",
+          "mirror-urls": [
+            "https://github.com/haasn/libplacebo.git"
+          ],
+          "tag": "v7.349.0",
+          "commit": "1fd3c7bde7b943fe8985c893310b5269a09b46c5",
+          "x-checker-data": {
+            "type": "git",
+            "tag-pattern": "^v([\\d.]+)$"
+          }
+        }
+      ],
+      "modules": [
+        {
+          "name": "shaderc",
+          "buildsystem": "cmake-ninja",
+          "builddir": true,
+          "config-opts": [
+            "-DSHADERC_SKIP_COPYRIGHT_CHECK=ON",
+            "-DSHADERC_SKIP_EXAMPLES=ON",
+            "-DSHADERC_SKIP_TESTS=ON",
+            "-DSPIRV_SKIP_EXECUTABLES=ON",
+            "-DENABLE_GLSLANG_BINARIES=OFF"
+          ],
+          "cleanup": [
+            "/bin",
+            "/include",
+            "/lib/cmake",
+            "/lib/pkgconfig",
+            "/lib/*.a"
+          ],
+          "sources": [
+            {
+              "type": "git",
+              "url": "https://github.com/google/shaderc.git",
+              "tag": "v2024.1",
+              "commit": "47a9387ef5b3600d30d84c71ec77a59dc7db46fa",
+              "x-checker-data": {
+                "type": "git",
+                "tag-pattern": "^v(\\d{4}\\.\\d{1,2})$"
+              }
+            },
+            {
+              "type": "git",
+              "url": "https://github.com/KhronosGroup/SPIRV-Tools.git",
+              "tag": "v2023.2",
+              "commit": "44d72a9b36702f093dd20815561a56778b2d181e",
+              "dest": "third_party/spirv-tools"
+            },
+            {
+              "type": "git",
+              "url": "https://github.com/KhronosGroup/SPIRV-Headers.git",
+              "tag": "sdk-1.3.250.1",
+              "commit": "268a061764ee69f09a477a695bf6a11ffe311b8d",
+              "dest": "third_party/spirv-headers"
+            },
+            {
+              "type": "git",
+              "url": "https://github.com/KhronosGroup/glslang.git",
+              "tag": "14.0.0",
+              "commit": "a91631b260cba3f22858d6c6827511e636c2458a",
+              "dest": "third_party/glslang"
+            }
+          ]
+        }
+      ]
+    },
     {
       "name": "libv4l2",
       "cleanup": [
@@ -94,8 +184,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://ffmpeg.org/releases/ffmpeg-5.1.3.tar.gz",
-          "sha256": "ac1b734adc57333ffbb603d9d5b70a4133f10d76380085c61c77fa3537f63e95"
+          "url": "https://ffmpeg.org/releases/ffmpeg-7.1.tar.gz",
+          "sha256": "42a7dc0d1583885d1b8f6559fa7ce28f97acafea6803de6a8f73e3ba229348bd"
         }
       ]
     },
@@ -112,8 +202,8 @@
       "sources": [
         {
           "type": "archive",
-          "url": "https://github.com/libass/libass/releases/download/0.17.0/libass-0.17.0.tar.gz",
-          "sha256": "72b9ba5d9dd1ac6d30b5962f38cbe7aefb180174f71d8b65c5e3c3060dbc403f"
+          "url": "https://github.com/libass/libass/releases/download/0.17.2/libass-0.17.2.tar.xz",
+          "sha256": "e8261b51d66ba933fe99248c6fdd8767ed96c5a7e5363c83992c735a2c2fbf74"
         }
       ]
     },

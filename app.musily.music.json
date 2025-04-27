@@ -1,7 +1,7 @@
 {
   "app-id": "app.musily.music",
   "runtime": "org.freedesktop.Platform",
-  "runtime-version": "22.08",
+  "runtime-version": "24.08",
   "sdk": "org.freedesktop.Sdk",
   "command": "musily",
   "separate-locales": false,
@@ -12,7 +12,9 @@
     "--device=dri",
     "--socket=pulseaudio",
     "--share=network",
-    "--talk-name=org.freedesktop.secrets"
+    "--talk-name=org.freedesktop.secrets",
+    "--talk-name=org.gnome.keyring",
+    "--talk-name=org.ayatana"
   ],
   "sdk-extensions": [
     "org.freedesktop.Sdk.Extension.vala"
