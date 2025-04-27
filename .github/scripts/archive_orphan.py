@@ -10,13 +10,12 @@ from github.GithubException import (
 
 
 def main() -> None:
-
     token = os.environ["GITHUB_TOKEN"]
     g = github.Github(auth=github.Auth.Token(token))
 
     org = g.get_organization("flathub")
 
-    excludes = {}
+    #    excludes = {}
 
     earliest = datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(
         weeks=60
@@ -52,9 +51,11 @@ def main() -> None:
                         earliest.isoformat(),
                     )
                 )
-                desc = "This repo is archived by Flathub as it is orphaned. If this was done in error or you wish to maintain it, please open an issue at https://github.com/flathub/flathub/issues"
-                repo.edit(description=desc)
-                repo.edit(archived=True)
+                # desc = "This repo is archived by Flathub as it is orphaned. If this was done in error or you wish to maintain it, please open an issue at https://github.com/flathub/flathub/issues"
+
+
+#                repo.edit(description=desc)
+#                repo.edit(archived=True)
 
 
 if __name__ == "__main__":

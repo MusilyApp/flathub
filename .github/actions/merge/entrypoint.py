@@ -17,7 +17,7 @@ from gql import Client, gql
 from gql.transport.requests import RequestsHTTPTransport
 
 gi.require_version("Json", "1.0")
-from gi.repository import Json
+from gi.repository import Json  # noqa: E402
 
 
 def set_protected_branch(token, repo, branch):
@@ -179,7 +179,10 @@ def main():
     print("Creating new repo on Flathub")
     repo = org.create_repo(appid)
     time.sleep(5)
-    repo.edit(homepage=f"https://flathub.org/apps/details/{appid}", delete_branch_on_merge=True)
+    repo.edit(
+        homepage=f"https://flathub.org/apps/details/{appid}",
+        delete_branch_on_merge=True,
+    )
 
     print("Adding flathub remote")
     clone.remotes.create(
@@ -232,11 +235,13 @@ def main():
             pass
 
     close_comment = (
-        f"A repository for this submission has been created: {repo.html_url}",
+        f"A repository for this submission has been created: {repo.html_url} and it will be published to Flathub in 4-5 hours.",
         "\n",
-        f"You will receive an invitation to be a collaborator which will grant you write access to the repository above. The invite can be also viewed [here]({repo.html_url}/invitations).",
+        f"You will receive an [invite]({repo.html_url}/invitations) to be a collaborator to the above repository. Please make sure to enable 2FA on GitHub and accept the invite within one week.",
         "\n",
-        "If you've never maintained an app on Flathub before, common questions are answered in the [app maintenance guide](https://docs.flathub.org/docs/for-app-authors/maintenance/). If you're the original developer (or an authorized party), [verify your app](https://docs.flathub.org/docs/for-app-authors/verification) next to let users know it's coming from you.",
+        "Please go through the [App maintenance guide](https://docs.flathub.org/docs/for-app-authors/maintenance/) if you have never maintained an app on Flathub before.",
+        "\n",
+        "If you're the original developer (or an authorized party), please [verify your app](https://docs.flathub.org/docs/for-app-authors/verification) to let users know it's coming from you.",
         "\n",
         "Please follow the [Flathub blog](https://docs.flathub.org/blog) for the latest announcements.",
         "\n",
