@@ -48,7 +48,7 @@ cp -r $projectId.metainfo.xml $metadataDir/
 # Copy tray icon(s) to icon theme directory for system tray
 mkdir -p /app/share/icons/hicolor/32x32/apps
 ls -l $projectName/data/flutter_assets/assets/icons/musily_tray/
-cp $projectName/data/flutter_assets/assets/icons/tray/tray_icon.png /app/share/icons/hicolor/32x32/apps/musily_tray_icon.png
+cp $projectName/data/flutter_assets/assets/icons/tray/tray_icon.png /app/share/icons/hicolor/32x32/apps/musily_tray.png
 
 # Update icon cache
 gtk-update-icon-cache /app/share/icons/hicolor

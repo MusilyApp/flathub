@@ -21,7 +21,11 @@
     "--talk-name=org.gnome.SettingsDaemon",
     "--socket=session-bus",
     "--filesystem=xdg-run/dbus",
-    "--filesystem=xdg-run/ayatana"
+    "--filesystem=xdg-run/ayatana",
+    "--filesystem=xdg-run/dconf",
+    "--filesystem=~/.config/dconf:ro",
+    "--talk-name=ca.desrt.dconf",
+    "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
   ],
   "sdk-extensions": [
     "org.freedesktop.Sdk.Extension.vala"
