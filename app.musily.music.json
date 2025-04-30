@@ -1,8 +1,8 @@
 {
   "app-id": "app.musily.music",
-  "runtime": "org.freedesktop.Platform",
-  "runtime-version": "24.08",
-  "sdk": "org.freedesktop.Sdk",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "47",
+  "sdk": "org.gnome.Sdk",
   "command": "musily",
   "separate-locales": false,
   "finish-args": [
@@ -18,14 +18,9 @@
     "--talk-name=org.kde.kwalletd5",
     "--talk-name=org.ayatana",
     "--talk-name=org.kde.StatusNotifierWatcher",
-    "--talk-name=org.gnome.SettingsDaemon",
     "--socket=session-bus",
     "--filesystem=xdg-run/dbus",
-    "--filesystem=xdg-run/ayatana",
-    "--filesystem=xdg-run/dconf",
-    "--filesystem=~/.config/dconf:ro",
-    "--talk-name=ca.desrt.dconf",
-    "--env=DCONF_USER_CONFIG_DIR=.config/dconf"
+    "--filesystem=xdg-run/ayatana"
   ],
   "sdk-extensions": [
     "org.freedesktop.Sdk.Extension.vala"
